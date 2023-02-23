@@ -9,7 +9,7 @@
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(237,245,249,1) 63%);
+    background: linear-gradient(0deg, rgb(186, 141, 111) 0%, #0c4c6c 63%);
   }
   
   .reset-button {
@@ -28,7 +28,7 @@
   button {
     background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,96,33,0.9542191876750701) 100%);
     border-radius: 8px;
-    color: #13293d;
+    color: #154329;
     cursor: pointer;
     font-size: 2em;
     letter-spacing: 0.21px;
@@ -40,6 +40,7 @@
     transition-property: background-color;
     transition-timing-function: linear;
     margin-top: 0.6em;
+    
   }
   
   header {
@@ -60,7 +61,7 @@
     flex: 0 auto;
     padding: 8px;
     margin-top: 50px;
-    background-color: white;
+    background-color: #0c4c6c;
     border-radius: 8px;
   }
   
@@ -76,12 +77,13 @@
   
   .card {
     background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,124,33,0.604079131652661) 100%);
-    border: 1px solid #eceff1;
+    border: 1px solid #0c4c6c;
     border-radius: 8px;
     box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
       rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
+    align-content: center;
   }
   
   .word-blanks {
@@ -116,7 +118,7 @@
     }
   
     section {
-      background-color: white;
+      background-color: #0c4c6c;
       margin: 20px auto;
       width: 92vw;
     }
@@ -137,4 +139,4 @@
       height: 200px;
     }
    
-  
+  }  

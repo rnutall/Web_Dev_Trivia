@@ -1,10 +1,10 @@
-var wordBlank = document.querySelector(".word-blanks");
+var questions = document.querySelector(".questions-container");
 var win = document.querySelector(".win");
 var lose = document.querySelector(".lose");
 var timerElement = document.querySelector(".timer-count");
 var startButton = document.querySelector(".start-button");
 
-var chosenWord = "";
+var questions = "";
 var numBlanks = 0;
 var winCounter = 0;
 var loseCounter = 0;
@@ -12,12 +12,18 @@ var isWin = false;
 var timer;
 var timerCount;
 
-// Arrays used to create blanks and letters on screen
-var lettersInChosenWord = [];
-var blanksLetters = [];
+// Array of questions the user will guess
+var questionsContainer = [ {
+  id: 0
+    q: "What is a variable that gives a true or false?",
+  a: [{ text: "variable", isCorrect: false }
+         { a2: "array", isCorrect: false },
+  { a3: "modulus", isCorrect: false },
+  { a4: "boolean", isCorrect: true },
+]
+},
+]
 
-// Array of words the user will guess
-var words = ["variable","array", "modulus", "object", "function", "string", "boolean"];
 
 // The init function is called when the page loads 
 function init() {
@@ -37,7 +43,7 @@ function startGame() {
 
 // The winGame function is called when the win condition is met
 function winGame() {
-  wordBlank.textContent = "YOU WON!!!🏆 ";
+  questions.textContent = "YOU WON!!!🏆 ";
   winCounter++
   startButton.disabled = false;
   setWins()
@@ -45,7 +51,7 @@ function winGame() {
 
 // The loseGame function is called when timer reaches 0
 function loseGame() {
-  wordBlank.textContent = "GAME OVER";
+  questions.textContent = "GAME OVER";
   loseCounter++
   startButton.disabled = false;
   setLosses()
@@ -54,7 +60,7 @@ function loseGame() {
 // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 function startTimer() {
   // Sets timer
-  timer = setInterval(function() {
+  timer = setInterval(function () {
     timerCount--;
     timerElement.textContent = timerCount;
     if (timerCount >= 0) {
@@ -75,18 +81,18 @@ function startTimer() {
 }
 
 // Creates blanks on screen
-function renderBlanks() {
+function questions() {
   // Randomly picks word from words array
   chosenWord = words[Math.floor(Math.random() * words.length)];
   lettersInChosenWord = chosenWord.split("");
   numBlanks = lettersInChosenWord.length;
-  blanksLetters = []
+  questions = []
   // Uses loop to push blanks to blankLetters array
   for (var i = 0; i < numBlanks; i++) {
-    blanksLetters.push("_");
+    questions.push("_");
   }
   // Converts blankLetters array into a string and renders it on the screen
-  wordBlank.textContent = blanksLetters.join(" ")
+  questions.textContent = questions.join(" ")
 }
 
 // Updates win count on screen and sets win count to client storage
@@ -128,7 +134,7 @@ function getlosses() {
 
 function checkWin() {
   // If the word equals the blankLetters array when converted to string, set isWin to true
-  if (chosenWord === blanksLetters.join("")) {
+  if (chosenAnswer === questions.join("")) {
     // This value is used in the timer function to test if win condition is met
     isWin = true;
   }
@@ -153,7 +159,7 @@ function checkLetters(letter) {
 }
 
 // Attach event listener to document to listen for key event
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function (event) {
   // If the count is zero, exit function
   if (timerCount === 0) {
     return;
